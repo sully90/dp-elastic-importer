@@ -3,11 +3,14 @@ package com.github.onsdigitial.elastic.importer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.onsdigital.elasticutils.client.bulk.configuration.BulkProcessorConfiguration;
 import com.github.onsdigital.elasticutils.client.bulk.options.BulkProcessingOptions;
+import com.github.onsdigital.elasticutils.client.http.SimpleRestClient;
+import com.github.onsdigital.elasticutils.util.ElasticSearchHelper;
 import com.github.onsdigitial.elastic.importer.elasticsearch.OpenNlpSearchClient;
 import com.github.onsdigitial.elastic.importer.models.Article;
 import com.github.onsdigitial.elastic.importer.models.Page;
 import com.github.onsdigitial.elastic.importer.util.Configuration;
 import org.elasticsearch.action.bulk.BackoffPolicy;
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.unit.ByteSizeUnit;
 import org.elasticsearch.common.unit.ByteSizeValue;
 import org.elasticsearch.common.unit.TimeValue;
@@ -18,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -29,6 +33,7 @@ public class App implements AutoCloseable {
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
     private static final ObjectMapper MAPPER = new ObjectMapper();
     private static final String INDEX = "test";
+    private List<Page> articles;
 
     private final OpenNlpSearchClient<Page> searchClient;
 
@@ -41,7 +46,11 @@ public class App implements AutoCloseable {
 
     public App() {
         this.dataDirectory = Configuration.getProperty("data.directory");
-        this.searchClient = OpenNlpSearchClient.getLocalClient(getConfiguration());
+
+        SimpleRestClient client = ElasticSearchHelper.getRestClientWithTimeout("localhost", 9200,
+                10000, 200000, 200000);
+        this.searchClient = new OpenNlpSearchClient<>(client, getConfiguration());
+        this.articles = new ArrayList<>();
     }
 
     public File[] subDirectories() {
@@ -81,7 +90,7 @@ public class App implements AutoCloseable {
             LOGGER.info("Index: " + indexName + " File: " + fileName);
             try {
                 Article article = MAPPER.readValue(file, Article.class);
-                this.searchClient.bulk(INDEX, article);
+                this.articles.add(article);
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
@@ -108,7 +117,17 @@ public class App implements AutoCloseable {
         return sb.toString();
     }
 
-    public void run() {
+    public void index() {
+        this.searchClient.bulk(INDEX, this.articles);
+    }
+
+    public void run() throws IOException {
+        // Wipe the index and reindex
+        Settings settings = ElasticSearchHelper.loadSettingsFromFile("/search/", "index-config.yml");
+        Map<String, Object> mapping = ElasticSearchHelper.loadMappingFromFile("/search", "default-document-mapping.json");
+
+        this.searchClient.dropIndex(INDEX);
+        this.searchClient.createIndex(INDEX, settings, mapping);
         this.indexDirectory(this.dataDirectory);
     }
 
@@ -123,10 +142,10 @@ public class App implements AutoCloseable {
 
     private static BulkProcessorConfiguration getConfiguration() {
         BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
-                .setBulkActions(100)
+                .setBulkActions(10)
                 .setBulkSize(new ByteSizeValue(5, ByteSizeUnit.MB))
                 .setFlushInterval(TimeValue.timeValueSeconds(5))
-                .setConcurrentRequests(5)
+                .setConcurrentRequests(4)
                 .setBackoffPolicy(
                         BackoffPolicy.exponentialBackoff(TimeValue.timeValueMillis(100), 3))
                 .build());
@@ -136,7 +155,8 @@ public class App implements AutoCloseable {
     public static void main(String[] args) {
         try (App app = new App()) {
             app.run();
-            app.awaitClose(30, TimeUnit.SECONDS);
+            app.index();
+            app.awaitClose(2, TimeUnit.MINUTES);
         } catch (Exception e) {
             e.printStackTrace();
         }

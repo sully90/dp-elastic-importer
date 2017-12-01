@@ -1,5 +1,7 @@
 package com.github.onsdigitial.elastic.importer.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 import java.util.Map;
 
@@ -117,5 +119,17 @@ public abstract class Page {
 
     public String getSource() {
         return source;
+    }
+
+    @JsonProperty("master_markdown")
+    public String getMasterMarkdown() {
+        if (this.getSections() != null) {
+            StringBuilder sb = new StringBuilder();
+            for (Section section : this.sections) {
+                sb.append(section.getMarkdown());
+            }
+            return sb.toString();
+        }
+        return null;
     }
 }
