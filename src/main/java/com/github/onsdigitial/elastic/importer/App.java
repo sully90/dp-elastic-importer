@@ -7,6 +7,7 @@ import com.github.onsdigital.elasticutils.client.http.SimpleRestClient;
 import com.github.onsdigital.elasticutils.util.ElasticSearchHelper;
 import com.github.onsdigitial.elastic.importer.elasticsearch.OpenNlpSearchClient;
 import com.github.onsdigitial.elastic.importer.models.Article;
+import com.github.onsdigitial.elastic.importer.models.Bulletin;
 import com.github.onsdigitial.elastic.importer.models.Page;
 import com.github.onsdigitial.elastic.importer.util.Configuration;
 import org.elasticsearch.action.bulk.BackoffPolicy;
@@ -19,9 +20,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -32,14 +31,16 @@ public class App implements AutoCloseable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
     private static final ObjectMapper MAPPER = new ObjectMapper();
-    private static final String INDEX = "test";
-    private List<Page> articles;
+    private static final String HOSTNAME = "localhost";
+    private static final int PORT = 9200;
+//    private static final String INDEX = "test";
+    private Map<String, List<Page>> pages;
 
     private final OpenNlpSearchClient<Page> searchClient;
 
     private static final List<String> allowedStrings = new ArrayList<String>() {{
-        add("articles");
-//            add("bulletins");
+            add("articles");
+            add("bulletins");
     }};
 
     private final String dataDirectory;
@@ -47,10 +48,22 @@ public class App implements AutoCloseable {
     public App() {
         this.dataDirectory = Configuration.getProperty("data.directory");
 
-        SimpleRestClient client = ElasticSearchHelper.getRestClientWithTimeout("localhost", 9200,
-                10000, 200000, 200000);
+        SimpleRestClient client = ElasticSearchHelper.getRestClientWithTimeout(HOSTNAME, PORT,
+                5000, 60000, 60000);
         this.searchClient = new OpenNlpSearchClient<>(client, getConfiguration());
-        this.articles = new ArrayList<>();
+        this.pages = new HashMap<>();
+    }
+
+    private static BulkProcessorConfiguration getConfiguration() {
+        BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
+                .setBulkActions(10)
+                .setBulkSize(new ByteSizeValue(5, ByteSizeUnit.MB))
+                .setFlushInterval(TimeValue.timeValueSeconds(5))
+                .setConcurrentRequests(4)
+                .setBackoffPolicy(
+                        BackoffPolicy.exponentialBackoff(TimeValue.timeValueMillis(100), 3))
+                .build());
+        return bulkProcessorConfiguration;
     }
 
     public File[] subDirectories() {
@@ -86,14 +99,34 @@ public class App implements AutoCloseable {
             }
         }
         if (accept) {
-            String indexName = this.getIndexFromDirectoryName(directory);
-            LOGGER.info("Index: " + indexName + " File: " + fileName);
+//            String indexName = this.getIndexFromDirectoryName(directory);
+            LOGGER.info("File: " + fileName);
             try {
-                Article article = MAPPER.readValue(file, Article.class);
-                this.articles.add(article);
+                Map<String, Object> dataMap = MAPPER.readValue(file, Map.class);
+                if (dataMap.containsKey("type") && dataMap.get("type") instanceof String) {
+                    String type = (String) dataMap.get("type");
+                    Page page = null;
+                    switch (type) {
+                        case "article":
+                            page = MAPPER.readValue(file, Article.class);
+                            break;
+                        case "bulletin":
+                            page = MAPPER.readValue(file, Bulletin.class);
+                            break;
+                        default:
+                            LOGGER.debug("Unknown type: " + type);
+                            break;
+                    }
+                    if (page != null) {
+                        if (!this.pages.containsKey(type)) {
+                            this.pages.put(type, new ArrayList<Page>());
+                        }
+                        this.pages.get(type).add(page);
+                    }
+                }
             } catch (IOException e) {
                 e.printStackTrace();
-                return;
+                System.exit(1);
             }
         }
     }
@@ -117,18 +150,27 @@ public class App implements AutoCloseable {
         return sb.toString();
     }
 
-    public void index() {
-        this.searchClient.bulk(INDEX, this.articles);
-    }
-
     public void run() throws IOException {
         // Wipe the index and reindex
         Settings settings = ElasticSearchHelper.loadSettingsFromFile("/search/", "index-config.yml");
         Map<String, Object> mapping = ElasticSearchHelper.loadMappingFromFile("/search", "default-document-mapping.json");
 
-        this.searchClient.dropIndex(INDEX);
-        this.searchClient.createIndex(INDEX, settings, mapping);
         this.indexDirectory(this.dataDirectory);
+
+        for (String index : this.pages.keySet()) {
+            if (this.searchClient.indexExists(index)) {
+                this.searchClient.dropIndex(index);
+            }
+            this.searchClient.createIndex(index, settings, mapping);
+//            this.searchClient.createIndex(index, Settings.EMPTY, Collections.emptyMap());
+        }
+    }
+
+    public void index() {
+        for (String index : this.pages.keySet()) {
+            LOGGER.info(String.format("Indexing %d documents into index: %s", this.pages.get(index).size(), index));
+            this.searchClient.bulk(index, this.pages.get(index));
+        }
     }
 
     public synchronized boolean awaitClose(long timeout, TimeUnit timeUnit) throws InterruptedException {
@@ -137,19 +179,7 @@ public class App implements AutoCloseable {
 
     @Override
     public void close() throws Exception {
-        searchClient.shutdown();
-    }
-
-    private static BulkProcessorConfiguration getConfiguration() {
-        BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
-                .setBulkActions(10)
-                .setBulkSize(new ByteSizeValue(5, ByteSizeUnit.MB))
-                .setFlushInterval(TimeValue.timeValueSeconds(5))
-                .setConcurrentRequests(4)
-                .setBackoffPolicy(
-                        BackoffPolicy.exponentialBackoff(TimeValue.timeValueMillis(100), 3))
-                .build());
-        return bulkProcessorConfiguration;
+        this.searchClient.shutdown();
     }
 
     public static void main(String[] args) {

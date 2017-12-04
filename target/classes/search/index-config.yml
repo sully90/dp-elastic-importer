@@ -6,11 +6,11 @@ analysis :
     #Overwriting default index analyzer
     #Makes all fields filterable with exact word matching, it is used to make filtering available on all fields by default
     #Searchable fields uses ons_standard_analyzer and ons_detailed_analyzer
-    default :
-      tokenizer : keyword
-      filter :
-        - trim
-        - lowercase
+#    default :
+#      tokenizer : keyword
+#      filter :
+#        - trim
+#        - lowercase
     #Used for analyzing fields that needs to be searcahable, does not include synonyms or stemming
     ons_standard :
       tokenizer : standard

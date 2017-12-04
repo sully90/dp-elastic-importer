@@ -70,6 +70,26 @@
           },
           "releaseDate": {
             "type": "date"
+          },
+          "accordion": {
+            "type": "nested",
+            "properties": {
+              "markdown": {
+                "type": "keyword",
+                "index": false,
+                "store": false
+              }
+            }
+          },
+          "accordion": {
+            "type": "nested",
+            "properties": {
+              "markdown": {
+                "type": "keyword",
+                "index": false,
+                "store": false
+              }
+            }
           }
         }
       },

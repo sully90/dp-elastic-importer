@@ -32,6 +32,11 @@ public abstract class Page {
     private String unit;
     private String preUnit;
     private String source;
+    private List<Object> equations;
+    private List<Object> alerts;
+    private List<Object> relatedMethodologyArticle;
+    private List<Object> versions;
+    private List<Object> topics;
 
     protected Page() {
 
@@ -121,15 +126,23 @@ public abstract class Page {
         return source;
     }
 
-    @JsonProperty("master_markdown")
-    public String getMasterMarkdown() {
-        if (this.getSections() != null) {
-            StringBuilder sb = new StringBuilder();
-            for (Section section : this.sections) {
-                sb.append(section.getMarkdown());
-            }
-            return sb.toString();
-        }
-        return null;
+    public List<Object> getEquations() {
+        return equations;
+    }
+
+    public List<Object> getAlerts() {
+        return alerts;
+    }
+
+    public List<Object> getRelatedMethodologyArticle() {
+        return relatedMethodologyArticle;
+    }
+
+    public List<Object> getVersions() {
+        return versions;
+    }
+
+    public List<Object> getTopics() {
+        return topics;
     }
 }

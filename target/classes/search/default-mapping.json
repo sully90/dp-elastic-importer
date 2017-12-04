@@ -71,6 +71,11 @@
           },
           "releaseDate": {
             "type": "date"
+          },
+          "master_markdown": {
+            "type": "text",
+            "index": "not_analyzed",
+            "ignore_above": 256
           }
         }
       },
