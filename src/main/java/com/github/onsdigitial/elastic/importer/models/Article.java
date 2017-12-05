@@ -1,5 +1,6 @@
 package com.github.onsdigitial.elastic.importer.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
@@ -12,10 +13,13 @@ public class Article extends Page {
 
     private List<Object> relatedArticles;
     private List<Object> relatedDatasets;
+    @JsonIgnore
     private List<Object> pdfDownloads;
     private boolean latestRelease;
     private String _abstract;
+    @JsonIgnore
     private List<Object> downloads;
+    @JsonIgnore
     private List<Object> supplementaryFiles;
     private Section section;
     private List<Object> markdown;

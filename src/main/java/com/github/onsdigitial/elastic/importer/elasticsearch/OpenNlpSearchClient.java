@@ -3,18 +3,22 @@ package com.github.onsdigitial.elastic.importer.elasticsearch;
 import com.github.onsdigital.elasticutils.client.Host;
 import com.github.onsdigital.elasticutils.client.bulk.configuration.BulkProcessorConfiguration;
 import com.github.onsdigital.elasticutils.client.generic.RestSearchClient;
+import com.github.onsdigital.elasticutils.client.generic.TransportSearchClient;
 import com.github.onsdigital.elasticutils.client.http.SimpleRestClient;
 import com.github.onsdigital.elasticutils.util.ElasticSearchHelper;
 import org.elasticsearch.action.index.IndexRequest;
+import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.xcontent.XContentType;
+
+import java.net.UnknownHostException;
 
 /**
  * @author sullid (David Sullivan) on 28/11/2017
  * @project dp-search-service
  */
-public class OpenNlpSearchClient<T> extends RestSearchClient<T> {
+public class OpenNlpSearchClient<T> extends TransportSearchClient<T> {
 
-    public OpenNlpSearchClient(SimpleRestClient client, BulkProcessorConfiguration configuration) {
+    public OpenNlpSearchClient(TransportClient client, BulkProcessorConfiguration configuration) {
         super(client, configuration);
     }
 
@@ -41,12 +45,12 @@ public class OpenNlpSearchClient<T> extends RestSearchClient<T> {
         }
     }
 
-    public static OpenNlpSearchClient getLocalClient() {
+    public static OpenNlpSearchClient getLocalClient() throws UnknownHostException {
         BulkProcessorConfiguration configuration = ElasticSearchHelper.getDefaultBulkProcessorConfiguration();
         return getLocalClient(configuration);
     }
 
-    public static OpenNlpSearchClient getLocalClient(BulkProcessorConfiguration configuration) {
-        return new OpenNlpSearchClient(ElasticSearchHelper.getRestClient(Host.LOCALHOST), configuration);
+    public static OpenNlpSearchClient getLocalClient(BulkProcessorConfiguration configuration) throws UnknownHostException {
+        return new OpenNlpSearchClient(ElasticSearchHelper.getTransportClient(Host.LOCALHOST), configuration);
     }
 }

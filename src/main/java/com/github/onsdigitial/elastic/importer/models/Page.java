@@ -1,6 +1,6 @@
 package com.github.onsdigitial.elastic.importer.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 import java.util.Map;
@@ -11,13 +11,17 @@ import java.util.Map;
  */
 public abstract class Page {
 
+    @JsonIgnore
     private List<Object> pdfTable;
     private List<Section> sections;
     private List<Section> accordion;
     private List<Object> relatedData;
     private List<Object> relatedDocuments;
+    @JsonIgnore
     private List<UriContent> charts;
+    @JsonIgnore
     private List<UriContent> tables;
+    @JsonIgnore
     private List<UriContent> images;
     private List<Object> links;
     private List<Object> relatedMethodology;
@@ -32,8 +36,11 @@ public abstract class Page {
     private String unit;
     private String preUnit;
     private String source;
+    @JsonIgnore
     private List<Object> equations;
+    @JsonIgnore
     private List<Object> alerts;
+    @JsonIgnore
     private List<Object> relatedMethodologyArticle;
     private List<Object> versions;
     private List<Object> topics;
@@ -62,14 +69,17 @@ public abstract class Page {
         return relatedDocuments;
     }
 
+    @JsonIgnore
     public List<UriContent> getCharts() {
         return charts;
     }
 
+    @JsonIgnore
     public List<UriContent> getTables() {
         return tables;
     }
 
+    @JsonIgnore
     public List<UriContent> getImages() {
         return images;
     }

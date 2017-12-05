@@ -4,17 +4,15 @@
     <list default="true" id="44a0f4a5-c241-4441-aff8-2cf9c76cdfee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/App$1.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/App$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/App.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/App.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient$Pipeline.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient$Pipeline.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/models/Article.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/models/Article.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/models/Page.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/models/Page.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Article.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Article.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Page.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Page.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/search/default-document-mapping.json" afterPath="$PROJECT_DIR$/src/main/resources/search/default-document-mapping.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/search/default-mapping.json" afterPath="$PROJECT_DIR$/src/main/resources/search/default-mapping.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/search/index-config.yml" afterPath="$PROJECT_DIR$/src/main/resources/search/index-config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/search/default-mapping.json" afterPath="$PROJECT_DIR$/target/classes/search/default-mapping.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/search/index-config.yml" afterPath="$PROJECT_DIR$/target/classes/search/index-config.yml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,8 +41,8 @@
       <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="160" column="37" lean-forward="true" selection-start-line="160" selection-start-column="37" selection-end-line="160" selection-end-column="37" />
+            <state relative-caret-position="2865">
+              <caret line="193" column="24" lean-forward="true" selection-start-line="193" selection-start-column="24" selection-end-line="193" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index-config.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/search/index-config.yml">
+      <file leaf-file-name="OpenNlpSearchClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="12" selection-end-column="20" />
+            <state relative-caret-position="525">
+              <caret line="49" column="26" lean-forward="false" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -75,12 +73,38 @@
       <file leaf-file-name="Page.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Page.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+            <state relative-caret-position="454">
+              <caret line="42" column="15" lean-forward="false" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3077#3078#0" expanded="true" />
-                <element signature="e#3106#3107#0" expanded="true" />
+                <element signature="e#3235#3236#0" expanded="true" />
+                <element signature="e#3264#3265#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Article.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Article.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="24" column="15" lean-forward="false" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+              <folding>
+                <element signature="e#1159#1160#0" expanded="true" />
+                <element signature="e#1191#1192#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Bulletin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Bulletin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="404">
+              <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+              <folding>
+                <element signature="e#634#635#0" expanded="true" />
+                <element signature="e#666#667#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,17 +151,17 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Contact.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/BaseDocument.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/models/WritableFeatureSetRequest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/exceptions/NoSuchIndexException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/indicies/ElasticSearchIndex.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Bulletin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Article.java" />
         <option value="$PROJECT_DIR$/src/main/resources/search/default-mapping.json" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Page.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" />
         <option value="$PROJECT_DIR$/src/main/resources/search/index-config.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/search/default-document-mapping.json" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Page.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Article.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" />
       </list>
     </option>
   </component>
@@ -439,7 +463,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2846442" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28714108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -618,59 +642,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="14" column="63" lean-forward="false" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Bulletin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="e#423#424#0" expanded="false" />
-            <element signature="e#462#463#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Article.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/search/default-mapping.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="73" column="11" lean-forward="true" selection-start-line="73" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Page.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3077#3078#0" expanded="true" />
-            <element signature="e#3106#3107#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/search/index-config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="12" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -683,10 +658,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/search/index-config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="18" lean-forward="true" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Page.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="42" column="15" lean-forward="false" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3235#3236#0" expanded="true" />
+            <element signature="e#3264#3265#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Bulletin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="33" column="5" lean-forward="false" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding>
+            <element signature="e#634#635#0" expanded="true" />
+            <element signature="e#666#667#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Article.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="24" column="15" lean-forward="false" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+          <folding>
+            <element signature="e#1159#1160#0" expanded="true" />
+            <element signature="e#1191#1192#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="49" column="26" lean-forward="false" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="160" column="37" lean-forward="true" selection-start-line="160" selection-start-column="37" selection-end-line="160" selection-end-column="37" />
+        <state relative-caret-position="2865">
+          <caret line="193" column="24" lean-forward="true" selection-start-line="193" selection-start-column="24" selection-end-line="193" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

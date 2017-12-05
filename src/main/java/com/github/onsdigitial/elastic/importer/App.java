@@ -3,7 +3,6 @@ package com.github.onsdigitial.elastic.importer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.onsdigital.elasticutils.client.bulk.configuration.BulkProcessorConfiguration;
 import com.github.onsdigital.elasticutils.client.bulk.options.BulkProcessingOptions;
-import com.github.onsdigital.elasticutils.client.http.SimpleRestClient;
 import com.github.onsdigital.elasticutils.util.ElasticSearchHelper;
 import com.github.onsdigitial.elastic.importer.elasticsearch.OpenNlpSearchClient;
 import com.github.onsdigitial.elastic.importer.models.Article;
@@ -11,6 +10,7 @@ import com.github.onsdigitial.elastic.importer.models.Bulletin;
 import com.github.onsdigitial.elastic.importer.models.Page;
 import com.github.onsdigitial.elastic.importer.util.Configuration;
 import org.elasticsearch.action.bulk.BackoffPolicy;
+import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.unit.ByteSizeUnit;
 import org.elasticsearch.common.unit.ByteSizeValue;
@@ -20,7 +20,11 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -45,23 +49,24 @@ public class App implements AutoCloseable {
 
     private final String dataDirectory;
 
-    public App() {
+    public App() throws UnknownHostException {
         this.dataDirectory = Configuration.getProperty("data.directory");
 
-        SimpleRestClient client = ElasticSearchHelper.getRestClientWithTimeout(HOSTNAME, PORT,
-                5000, 60000, 60000);
+//        SimpleRestClient client = ElasticSearchHelper.getRestClientWithTimeout(HOSTNAME, PORT,
+//                1000, 60000, 60000);
+        TransportClient client = ElasticSearchHelper.getTransportClient(HOSTNAME, 9300);
         this.searchClient = new OpenNlpSearchClient<>(client, getConfiguration());
         this.pages = new HashMap<>();
     }
 
     private static BulkProcessorConfiguration getConfiguration() {
         BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
-                .setBulkActions(10)
+                .setBulkActions(25)
                 .setBulkSize(new ByteSizeValue(5, ByteSizeUnit.MB))
                 .setFlushInterval(TimeValue.timeValueSeconds(5))
                 .setConcurrentRequests(4)
                 .setBackoffPolicy(
-                        BackoffPolicy.exponentialBackoff(TimeValue.timeValueMillis(100), 3))
+                        BackoffPolicy.exponentialBackoff(TimeValue.timeValueMillis(1000), 5))
                 .build());
         return bulkProcessorConfiguration;
     }
@@ -185,10 +190,32 @@ public class App implements AutoCloseable {
     public static void main(String[] args) {
         try (App app = new App()) {
             app.run();
+            long startTime = System.currentTimeMillis();
             app.index();
-            app.awaitClose(2, TimeUnit.MINUTES);
+            app.awaitClose(5, TimeUnit.MINUTES);
+            long endTime = System.currentTimeMillis();
+            long duration = (endTime - startTime);
+            System.out.format("Milli = %s, ( S_Start : %s, S_End : %s ) \n", duration, startTime, endTime );
+            System.out.println("Human-Readable format : "+ millisToShortDHMS( duration ) );
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static String millisToShortDHMS(long duration) {
+        String res = "";    // java.util.concurrent.TimeUnit;
+        long days       = TimeUnit.MILLISECONDS.toDays(duration);
+        long hours      = TimeUnit.MILLISECONDS.toHours(duration) -
+                TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(duration));
+        long minutes    = TimeUnit.MILLISECONDS.toMinutes(duration) -
+                TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(duration));
+        long seconds    = TimeUnit.MILLISECONDS.toSeconds(duration) -
+                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration));
+        long millis     = TimeUnit.MILLISECONDS.toMillis(duration) -
+                TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(duration));
+
+        if (days == 0)      res = String.format("%02d:%02d:%02d.%04d", hours, minutes, seconds, millis);
+        else                res = String.format("%dd %02d:%02d:%02d.%04d", days, hours, minutes, seconds, millis);
+        return res;
     }
 }
