@@ -59,7 +59,7 @@ public class App implements AutoCloseable {
 
     private static BulkProcessorConfiguration getConfiguration() {
         BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
-                .setBulkActions(50)
+                .setBulkActions(100)
                 .setBulkSize(new ByteSizeValue(5, ByteSizeUnit.MB))
                 .setFlushInterval(TimeValue.timeValueSeconds(5))
                 .setConcurrentRequests(8)
@@ -208,7 +208,7 @@ public class App implements AutoCloseable {
                 numDocumentsIndexed += pages.get(key).size();
             }
             float timePerDocument = new Long(duration).floatValue() / (float) numDocumentsIndexed;
-            System.out.println("Time per document : "+ timePerDocument / 1000.0f );
+            System.out.println("Time per document : "+ timePerDocument / 1000.0f + "s" );
         } catch (Exception e) {
             e.printStackTrace();
         }
