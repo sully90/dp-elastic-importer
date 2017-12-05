@@ -36,8 +36,6 @@ public class App implements AutoCloseable {
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
     private static final ObjectMapper MAPPER = new ObjectMapper();
     private static final String HOSTNAME = "localhost";
-    private static final int PORT = 9200;
-//    private static final String INDEX = "test";
     private Map<String, List<Page>> pages;
 
     private final OpenNlpSearchClient<Page> searchClient;
@@ -54,17 +52,17 @@ public class App implements AutoCloseable {
 
 //        SimpleRestClient client = ElasticSearchHelper.getRestClientWithTimeout(HOSTNAME, PORT,
 //                1000, 60000, 60000);
-        TransportClient client = ElasticSearchHelper.getTransportClient(HOSTNAME, 9300);
+        TransportClient client = ElasticSearchHelper.getTransportClient(HOSTNAME, ElasticSearchHelper.DEFAULT_TCP_PORT);
         this.searchClient = new OpenNlpSearchClient<>(client, getConfiguration());
         this.pages = new HashMap<>();
     }
 
     private static BulkProcessorConfiguration getConfiguration() {
         BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
-                .setBulkActions(25)
+                .setBulkActions(50)
                 .setBulkSize(new ByteSizeValue(5, ByteSizeUnit.MB))
                 .setFlushInterval(TimeValue.timeValueSeconds(5))
-                .setConcurrentRequests(4)
+                .setConcurrentRequests(8)
                 .setBackoffPolicy(
                         BackoffPolicy.exponentialBackoff(TimeValue.timeValueMillis(1000), 5))
                 .build());
@@ -178,6 +176,10 @@ public class App implements AutoCloseable {
         }
     }
 
+    public Map<String, List<Page>> getPages() {
+        return pages;
+    }
+
     public synchronized boolean awaitClose(long timeout, TimeUnit timeUnit) throws InterruptedException {
         return this.searchClient.awaitClose(timeout, timeUnit);
     }
@@ -192,11 +194,21 @@ public class App implements AutoCloseable {
             app.run();
             long startTime = System.currentTimeMillis();
             app.index();
+            LOGGER.info("Bulk request complete. Awaiting close...");
             app.awaitClose(5, TimeUnit.MINUTES);
+            LOGGER.info("Done");
             long endTime = System.currentTimeMillis();
             long duration = (endTime - startTime);
             System.out.format("Milli = %s, ( S_Start : %s, S_End : %s ) \n", duration, startTime, endTime );
             System.out.println("Human-Readable format : "+ millisToShortDHMS( duration ) );
+
+            int numDocumentsIndexed = 0;
+            Map<String, List<Page>> pages = app.getPages();
+            for (String key : pages.keySet()) {
+                numDocumentsIndexed += pages.get(key).size();
+            }
+            float timePerDocument = new Long(duration).floatValue() / (float) numDocumentsIndexed;
+            System.out.println("Time per document : "+ timePerDocument / 1000.0f );
         } catch (Exception e) {
             e.printStackTrace();
         }
