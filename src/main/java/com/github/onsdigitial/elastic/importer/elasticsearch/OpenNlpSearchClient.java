@@ -5,6 +5,9 @@ import com.github.onsdigital.elasticutils.client.bulk.configuration.BulkProcesso
 import com.github.onsdigital.elasticutils.client.generic.RestSearchClient;
 import com.github.onsdigital.elasticutils.client.generic.TransportSearchClient;
 import com.github.onsdigital.elasticutils.client.http.SimpleRestClient;
+import com.github.onsdigital.elasticutils.client.pipeline.Pipeline;
+import com.github.onsdigital.elasticutils.client.type.DefaultDocumentTypes;
+import com.github.onsdigital.elasticutils.client.type.DocumentType;
 import com.github.onsdigital.elasticutils.util.ElasticSearchHelper;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.transport.TransportClient;
@@ -23,15 +26,15 @@ public class OpenNlpSearchClient<T> extends TransportSearchClient<T> {
     }
 
     public IndexRequest createIndexRequest(String index, byte[] messageBytes) {
-        return super.createIndexRequestWithPipeline(index, messageBytes, Pipeline.OPENNLP.getPipelineName(), XContentType.JSON);
+        return super.createIndexRequestWithPipeline(index, DefaultDocumentTypes.DOCUMENT, Pipeline.OPENNLP, messageBytes, XContentType.JSON);
     }
 
     @Override
-    public IndexRequest createIndexRequest(String index, byte[] messageBytes, XContentType xContentType) {
-        return super.createIndexRequestWithPipeline(index, messageBytes, Pipeline.OPENNLP.getPipelineName(), xContentType);
+    public IndexRequest createIndexRequest(String index, DocumentType documentType, byte[] messageBytes, XContentType xContentType) {
+        return super.createIndexRequestWithPipeline(index, documentType, Pipeline.OPENNLP, messageBytes, xContentType);
     }
 
-    public enum Pipeline {
+    public enum Pipeline implements com.github.onsdigital.elasticutils.client.pipeline.Pipeline {
         OPENNLP("opennlp-pipeline");
 
         private String pipelineName;
@@ -40,7 +43,7 @@ public class OpenNlpSearchClient<T> extends TransportSearchClient<T> {
             this.pipelineName = pipelineName;
         }
 
-        public String getPipelineName() {
+        public String getPipeline() {
             return pipelineName;
         }
     }

@@ -1,20 +1,42 @@
 package com.github.onsdigitial.elastic.importer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.onsdigital.elasticutils.client.Host;
 import com.github.onsdigital.elasticutils.client.bulk.configuration.BulkProcessorConfiguration;
-import com.github.onsdigital.elasticutils.client.bulk.options.BulkProcessingOptions;
+import com.github.onsdigital.elasticutils.client.generic.ElasticSearchClient;
+import com.github.onsdigital.elasticutils.client.generic.TransportSearchClient;
 import com.github.onsdigital.elasticutils.util.ElasticSearchHelper;
-import com.github.onsdigitial.elastic.importer.elasticsearch.OpenNlpSearchClient;
-import com.github.onsdigitial.elastic.importer.models.Article;
-import com.github.onsdigitial.elastic.importer.models.Bulletin;
-import com.github.onsdigitial.elastic.importer.models.Page;
-import com.github.onsdigitial.elastic.importer.util.Configuration;
-import org.elasticsearch.action.bulk.BackoffPolicy;
+import com.github.onsdigitial.elastic.importer.models.page.adhoc.AdHoc;
+import com.github.onsdigitial.elastic.importer.models.page.base.Page;
+import com.github.onsdigitial.elastic.importer.models.page.base.PageType;
+import com.github.onsdigitial.elastic.importer.models.page.census.HomePageCensus;
+import com.github.onsdigitial.elastic.importer.models.page.compendium.CompendiumChapter;
+import com.github.onsdigitial.elastic.importer.models.page.compendium.CompendiumData;
+import com.github.onsdigitial.elastic.importer.models.page.compendium.CompendiumLandingPage;
+import com.github.onsdigitial.elastic.importer.models.page.home.HomePage;
+import com.github.onsdigitial.elastic.importer.models.page.release.Release;
+import com.github.onsdigitial.elastic.importer.models.page.staticpage.StaticArticle;
+import com.github.onsdigitial.elastic.importer.models.page.staticpage.StaticLandingPage;
+import com.github.onsdigitial.elastic.importer.models.page.staticpage.foi.FOI;
+import com.github.onsdigitial.elastic.importer.models.page.staticpage.qmi.QMI;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.data.DataSlice;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.data.timeseries.TimeSeries;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.dataset.Dataset;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.dataset.DatasetLandingPage;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.dataset.ReferenceTables;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.dataset.TimeSeriesDataset;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.document.article.Article;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.document.article.ArticleDownload;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.document.bulletin.Bulletin;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.document.figure.chart.Chart;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.document.figure.equation.Equation;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.document.figure.image.Image;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.document.figure.table.Table;
+import com.github.onsdigitial.elastic.importer.models.page.taxonomy.ProductPage;
+import com.github.onsdigitial.elastic.importer.models.page.taxonomy.TaxonomyLandingPage;
+import com.github.onsdigitial.elastic.importer.models.page.visualisation.Visualisation;
+import com.github.onsdigitial.elastic.importer.util.FileScanner;
 import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.unit.ByteSizeUnit;
-import org.elasticsearch.common.unit.ByteSizeValue;
-import org.elasticsearch.common.unit.TimeValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,212 +44,153 @@ import java.io.File;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
- * @author sullid (David Sullivan) on 30/11/2017
+ * @author sullid (David Sullivan) on 18/12/2017
  * @project dp-elastic-importer
  */
-public class App implements AutoCloseable {
+public class App {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
     private static final ObjectMapper MAPPER = new ObjectMapper();
-    private static final String HOSTNAME = "localhost";
-    private Map<String, List<Page>> pages;
+    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
-    private final OpenNlpSearchClient<Page> searchClient;
+    private final FileScanner fileScanner;
+    private final Host host = Host.LOCALHOST;
 
-    private static final List<String> allowedStrings = new ArrayList<String>() {{
-            add("articles");
-            add("bulletins");
-    }};
+    private List<Page> pages;
 
-    private final String dataDirectory;
+    public App() {
+        String zebedeeRoot = System.getenv("zebedee_root");
+        String dataDirectory = String.format("%s/zebedee/master/", zebedeeRoot);
 
-    public App() throws UnknownHostException {
-        this.dataDirectory = Configuration.getProperty("data.directory");
-
-//        SimpleRestClient client = ElasticSearchHelper.getRestClientWithTimeout(HOSTNAME, PORT,
-//                1000, 60000, 60000);
-        TransportClient client = ElasticSearchHelper.getTransportClient(HOSTNAME, ElasticSearchHelper.DEFAULT_TCP_PORT);
-        this.searchClient = new OpenNlpSearchClient<>(client, getConfiguration());
-        this.pages = new HashMap<>();
+        this.fileScanner = new FileScanner(dataDirectory);
+        this.pages = new ArrayList<>();
     }
 
-    private static BulkProcessorConfiguration getConfiguration() {
-        BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
-                .setBulkActions(100)
-                .setBulkSize(new ByteSizeValue(5, ByteSizeUnit.MB))
-                .setFlushInterval(TimeValue.timeValueSeconds(5))
-                .setConcurrentRequests(8)
-                .setBackoffPolicy(
-                        BackoffPolicy.exponentialBackoff(TimeValue.timeValueMillis(1000), 5))
-                .build());
-        return bulkProcessorConfiguration;
+    private Page asClass(File file, Class<? extends Page> returnClass) throws IOException {
+        return MAPPER.readValue(file, returnClass);
     }
 
-    public File[] subDirectories() {
-        return this.subDirectories(this.dataDirectory);
-    }
+    public Page fromFile(File file) throws IOException {
+        Object obj = MAPPER.readValue(file, Object.class);
 
-    public File[] subDirectories(String currentDirectory) {
-        return new File(currentDirectory).listFiles(File::isDirectory);
-    }
-
-    public void indexDirectory(String directory) {
-        File[] subDirectories = this.subDirectories(directory);
-        if (subDirectories.length > 0) {
-            for (File subDirectory : subDirectories) {
-                this.indexDirectory(subDirectory.getAbsolutePath());
-            }
-        } else {
-            // We are at the root level, so process the json
-            readAndIndexJson(directory);
-        }
-    }
-
-    private void readAndIndexJson(String directory) {
-        String fileName = new StringBuilder(directory).append("/").append("data.json").toString();
-        File file = new File(fileName);
-        boolean accept = false;
-        if (file.isFile()) {
-            for (String allowed : allowedStrings) {
-                if (file.getAbsolutePath().contains(allowed)) {
-                    accept = true;
-                    break;
-                }
-            }
-        }
-        if (accept) {
-//            String indexName = this.getIndexFromDirectoryName(directory);
-            LOGGER.info("File: " + fileName);
-            try {
-                Map<String, Object> dataMap = MAPPER.readValue(file, Map.class);
-                if (dataMap.containsKey("type") && dataMap.get("type") instanceof String) {
-                    String type = (String) dataMap.get("type");
-                    Page page = null;
-                    switch (type) {
-                        case "article":
-                            page = MAPPER.readValue(file, Article.class);
+        if (obj instanceof Map) {
+            Map<String, Object> objectMap = (Map<String, Object>) obj;
+            if (objectMap.containsKey("type") && objectMap.get("type") instanceof String) {
+                String type = (String) objectMap.get("type");
+                PageType pageType = PageType.forType(type);
+                if (pageType != null) {
+                    switch (pageType) {
+                        case home_page:
+                            return asClass(file, HomePage.class);
+                        case home_page_census:
+                            return asClass(file, HomePageCensus.class);
+                        case taxonomy_landing_page:
+                            return asClass(file, TaxonomyLandingPage.class);
+                        case product_page:
+                            return asClass(file, ProductPage.class);
+                        case bulletin:
+                            return asClass(file, Bulletin.class);
+                        case article:
+                            return asClass(file, Article.class);
+                        case article_download:
+                            return asClass(file, ArticleDownload.class);
+                        case timeseries:
+                            return asClass(file, TimeSeries.class);
+                        case data_slice:
+                            return asClass(file, DataSlice.class);
+                        case compendium_landing_page:
+                            return asClass(file, CompendiumLandingPage.class);
+                        case compendium_chapter:
+                            return asClass(file, CompendiumChapter.class);
+                        case compendium_data:
+                            return asClass(file, CompendiumData.class);
+                        case static_landing_page:
+                            return asClass(file, StaticLandingPage.class);
+                        case static_article:
+                            return asClass(file, StaticArticle.class);
+                        case static_page:
                             break;
-                        case "bulletin":
-                            page = MAPPER.readValue(file, Bulletin.class);
-                            break;
-                        default:
-                            LOGGER.debug("Unknown type: " + type);
-                            break;
-                    }
-                    if (page != null) {
-                        if (!this.pages.containsKey(type)) {
-                            this.pages.put(type, new ArrayList<Page>());
-                        }
-                        this.pages.get(type).add(page);
+//                        return asClass(file, StaticPage.class);
+                        case static_qmi:
+                            return asClass(file, QMI.class);
+                        case static_foi:
+                            return asClass(file, FOI.class);
+                        case static_adhoc:
+                            return asClass(file, AdHoc.class);
+                        case dataset:
+                            return asClass(file, Dataset.class);
+                        case dataset_landing_page:
+                            return asClass(file, DatasetLandingPage.class);
+                        case timeseries_dataset:
+                            return asClass(file, TimeSeriesDataset.class);
+                        case release:
+                            return asClass(file, Release.class);
+                        case reference_tables:
+                            return asClass(file, ReferenceTables.class);
+                        case chart:
+                            return asClass(file, Chart.class);
+                        case table:
+                            return asClass(file, Table.class);
+                        case image:
+                            return asClass(file, Image.class);
+                        case visualisation:
+                            return asClass(file, Visualisation.class);
+                        case equation:
+                            return asClass(file, Equation.class);
                     }
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.exit(1);
             }
         }
-    }
-
-    private String getIndexFromDirectoryName(String directory) {
-        String extension = directory.replace(this.dataDirectory, "");
-        String[] parts = extension.split("/");
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < parts.length; i++) {
-            String part = parts[i];
-            if (allowedStrings.contains(part)) {
-                break;
-            } else {
-                sb.append(part);
-                if (i < parts.length - 1 && !allowedStrings.contains(parts[i+1])) {
-                    sb.append("_");
-                }
-            }
-        }
-        return sb.toString();
-    }
-
-    public void run() throws IOException {
-        // Wipe the index and reindex
-        Settings settings = ElasticSearchHelper.loadSettingsFromFile("/search/", "index-config.yml");
-        Map<String, Object> mapping = ElasticSearchHelper.loadMappingFromFile("/search", "default-document-mapping.json");
-
-        this.indexDirectory(this.dataDirectory);
-
-        for (String index : this.pages.keySet()) {
-            if (this.searchClient.indexExists(index)) {
-                this.searchClient.dropIndex(index);
-            }
-            this.searchClient.createIndex(index, settings, mapping);
-//            this.searchClient.createIndex(index, Settings.EMPTY, Collections.emptyMap());
-        }
+        return null;
     }
 
     public void index() {
-        for (String index : this.pages.keySet()) {
-            LOGGER.info(String.format("Indexing %d documents into index: %s", this.pages.get(index).size(), index));
-            this.searchClient.bulk(index, this.pages.get(index));
+        try (ElasticSearchClient<Page> searchClient = getClient(this.host)) {
+            List<Page> pages = this.getPages();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
         }
     }
 
-    public Map<String, List<Page>> getPages() {
-        return pages;
+    public List<Page> getPages() {
+        if (pages.size() == 0) {
+            List<File> files = null;
+            try {
+                files = fileScanner.getFiles();
+            } catch (IOException e) {
+                LOGGER.error("Unable to retrieve page files.", e);
+            }
+
+            for (File file : files) {
+                Page page = null;
+                try {
+                    page = fromFile(file);
+                } catch (IOException e) {
+                    LOGGER.error(String.format("Error parsing file: ", file.getAbsolutePath()), e);
+                    System.exit(1);
+                }
+                if (page != null) {
+                    pages.add(page);
+                }
+            }
+        }
+        return this.pages;
     }
 
-    public synchronized boolean awaitClose(long timeout, TimeUnit timeUnit) throws InterruptedException {
-        return this.searchClient.awaitClose(timeout, timeUnit);
-    }
-
-    @Override
-    public void close() throws Exception {
-        this.searchClient.shutdown();
+    private static ElasticSearchClient<Page> getClient(Host host) throws UnknownHostException {
+        TransportClient transportClient = ElasticSearchHelper.getTransportClient(host);
+        BulkProcessorConfiguration configuration = ElasticSearchHelper.getDefaultBulkProcessorConfiguration();
+        return new TransportSearchClient<>(transportClient, configuration);
     }
 
     public static void main(String[] args) {
-        try (App app = new App()) {
-            app.run();
-            long startTime = System.currentTimeMillis();
-            app.index();
-            LOGGER.info("Bulk request complete. Awaiting close...");
-            app.awaitClose(5, TimeUnit.MINUTES);
-            LOGGER.info("Done");
-            long endTime = System.currentTimeMillis();
-            long duration = (endTime - startTime);
-            System.out.format("Milli = %s, ( S_Start : %s, S_End : %s ) \n", duration, startTime, endTime );
-            System.out.println("Human-Readable format : "+ millisToShortDHMS( duration ) );
-
-            int numDocumentsIndexed = 0;
-            Map<String, List<Page>> pages = app.getPages();
-            for (String key : pages.keySet()) {
-                numDocumentsIndexed += pages.get(key).size();
-            }
-            float timePerDocument = new Long(duration).floatValue() / (float) numDocumentsIndexed;
-            System.out.println("Time per document : "+ timePerDocument / 1000.0f + "s" );
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        App app = new App();
+        List<Page> pages = app.getPages();
+        System.out.println(pages.size());
     }
 
-    public static String millisToShortDHMS(long duration) {
-        String res = "";    // java.util.concurrent.TimeUnit;
-        long days       = TimeUnit.MILLISECONDS.toDays(duration);
-        long hours      = TimeUnit.MILLISECONDS.toHours(duration) -
-                TimeUnit.DAYS.toHours(TimeUnit.MILLISECONDS.toDays(duration));
-        long minutes    = TimeUnit.MILLISECONDS.toMinutes(duration) -
-                TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(duration));
-        long seconds    = TimeUnit.MILLISECONDS.toSeconds(duration) -
-                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration));
-        long millis     = TimeUnit.MILLISECONDS.toMillis(duration) -
-                TimeUnit.SECONDS.toMillis(TimeUnit.MILLISECONDS.toSeconds(duration));
-
-        if (days == 0)      res = String.format("%02d:%02d:%02d.%04d", hours, minutes, seconds, millis);
-        else                res = String.format("%dd %02d:%02d:%02d.%04d", days, hours, minutes, seconds, millis);
-        return res;
-    }
 }

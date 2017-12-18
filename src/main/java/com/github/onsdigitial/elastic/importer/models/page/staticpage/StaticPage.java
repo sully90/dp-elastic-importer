@@ -1,0 +1,60 @@
+package com.github.onsdigitial.elastic.importer.models.page.staticpage;
+
+
+
+import com.github.onsdigitial.elastic.importer.models.page.base.PageType;
+import com.github.onsdigitial.elastic.importer.models.page.staticpage.base.BaseStaticPage;
+import com.github.onsdigitial.elastic.importer.models.page.statistics.document.figure.FigureSection;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by bren on 30/06/15.
+ *
+ * Simple static page with only markdown content
+ */
+public class StaticPage extends BaseStaticPage {
+
+    private List<FigureSection> charts = new ArrayList<>();
+    private List<FigureSection> tables = new ArrayList<>();
+    private List<FigureSection> images = new ArrayList<>();
+    private List<FigureSection> equations = new ArrayList<>();
+
+    public List<FigureSection> getCharts() {
+        return charts;
+    }
+
+    public void setCharts(List<FigureSection> charts) {
+        this.charts = charts;
+    }
+
+    public List<FigureSection> getTables() {
+        return tables;
+    }
+
+    public void setTables(List<FigureSection> tables) {
+        this.tables = tables;
+    }
+
+    public List<FigureSection> getImages() {
+        return images;
+    }
+
+    public void setImages(List<FigureSection> images) {
+        this.images = images;
+    }
+
+    public List<FigureSection> getEquations() {
+        return equations;
+    }
+
+    public void setEquations(List<FigureSection> equations) {
+        this.equations = equations;
+    }
+
+    @Override
+    public PageType getType() {
+        return PageType.static_page;
+    }
+}
