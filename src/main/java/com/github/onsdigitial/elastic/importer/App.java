@@ -10,6 +10,7 @@ import com.github.onsdigital.elasticutils.client.bulk.configuration.BulkProcesso
 import com.github.onsdigital.elasticutils.client.bulk.options.BulkProcessingOptions;
 import com.github.onsdigital.elasticutils.client.generic.ElasticSearchClient;
 import com.github.onsdigital.elasticutils.client.generic.RestSearchClient;
+import com.github.onsdigital.elasticutils.client.generic.TransportSearchClient;
 import com.github.onsdigital.elasticutils.client.http.SimpleRestClient;
 import com.github.onsdigital.elasticutils.client.type.DefaultDocumentTypes;
 import com.github.onsdigital.elasticutils.util.ElasticSearchHelper;
@@ -222,7 +223,7 @@ public class App {
 
     public void index() throws IOException {
         List<File> files = this.fileScanner.getFiles();
-        try (ElasticSearchClient<Page> searchClient = getClientTcp(this.host)) {
+        try (ElasticSearchClient<Page> searchClient = getClientOpenNlpTcp(this.host)) {
 
             // Reset the index
             resetIndex(this.indexName, searchClient);
@@ -247,9 +248,14 @@ public class App {
         searchClient.createIndex(indexName, DefaultDocumentTypes.DOCUMENT, settings, mapping);
     }
 
-    private static ElasticSearchClient<Page> getClientTcp(Host host) throws UnknownHostException {
+    private static ElasticSearchClient<Page> getClientOpenNlpTcp(Host host) throws UnknownHostException {
         TransportClient transportClient = ElasticSearchHelper.getTransportClient(host);
         return new OpenNlpSearchClient<>(transportClient, getConfiguration());
+    }
+
+    private static ElasticSearchClient<Page> getClientTcp(Host host) throws UnknownHostException {
+        TransportClient transportClient = ElasticSearchHelper.getTransportClient(host);
+        return new TransportSearchClient<>(transportClient, getConfiguration());
     }
 
     private static ElasticSearchClient<Page> getClientHttp(Host host) throws UnknownHostException {
