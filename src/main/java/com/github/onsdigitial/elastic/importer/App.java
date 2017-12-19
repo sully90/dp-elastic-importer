@@ -263,11 +263,11 @@ public class App {
         return new RestSearchClient<>(restClient, getConfiguration());
     }
 
-        private static BulkProcessorConfiguration getConfiguration() {
+    private static BulkProcessorConfiguration getConfiguration() {
         BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
                 .setBulkActions(100)
-                .setBulkSize(new ByteSizeValue(5, ByteSizeUnit.MB))
-                .setFlushInterval(TimeValue.timeValueSeconds(5))
+//                .setBulkSize(new ByteSizeValue(5, ByteSizeUnit.MB))
+//                .setFlushInterval(TimeValue.timeValueSeconds(5))
                 .setConcurrentRequests(8)
                 .setBackoffPolicy(
                         BackoffPolicy.exponentialBackoff(TimeValue.timeValueMillis(1000), 5))
