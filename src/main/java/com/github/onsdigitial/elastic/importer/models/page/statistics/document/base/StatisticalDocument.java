@@ -25,6 +25,7 @@ public abstract class StatisticalDocument extends Statistics {
     private List<FigureSection> images = new ArrayList<>();
     private List<FigureSection> equations = new ArrayList<>();
     private List<Link> links;
+    private List<Link> externalLinks;
 
     public List<MarkdownSection> getSections() {
         return sections;
@@ -88,5 +89,9 @@ public abstract class StatisticalDocument extends Statistics {
 
     public void setLinks(List<Link> links) {
         this.links = links;
+    }
+
+    public List<Link> getExternalLinks() {
+        return externalLinks;
     }
 }

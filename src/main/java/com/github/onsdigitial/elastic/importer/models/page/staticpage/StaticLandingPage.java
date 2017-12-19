@@ -15,7 +15,6 @@ import java.util.List;
  */
 public class StaticLandingPage extends BaseStaticPage {
 
-    private String fileName;
     private List<StaticPageSection> sections;
 
     @Override
@@ -29,9 +28,5 @@ public class StaticLandingPage extends BaseStaticPage {
 
     public void setSections(List<StaticPageSection> sections) {
         this.sections = sections;
-    }
-
-    public String getFileName() {
-        return fileName;
     }
 }

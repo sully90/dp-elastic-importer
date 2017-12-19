@@ -436,4 +436,7 @@ public class PageDescription extends Content implements Comparable<PageDescripti
         this.versionLabel = versionLabel;
     }
 
+    public String getSeasonalAdjustment() {
+        return seasonalAdjustment;
+    }
 }

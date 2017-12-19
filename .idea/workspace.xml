@@ -1,91 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" line="142" mnemonic="5" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="44a0f4a5-c241-4441-aff8-2cf9c76cdfee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/OldApp.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/base/Content.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/adhoc/AdHoc.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/Page.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageDescription.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/census/HomePageCensus.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/census/HomeSectionCensus.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/compendium/CompendiumChapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/compendium/CompendiumData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/compendium/CompendiumLandingPage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/home/HomePage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/home/HomeSection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/release/Release.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/release/ReleaseDateChange.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/Methodology.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/MethodologyDownload.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticArticle.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticLandingPage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticPage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/BaseStaticPage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/StaticPageSection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/foi/FOI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/qmi/QMI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/base/Statistics.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/DataSlice.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/base/StatisticalData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/timeseries/TimeSeries.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/timeseries/TimeSeriesValue.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/dataset/Dataset.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/dataset/DatasetLandingPage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/dataset/DownloadSection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/dataset/ReferenceTables.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/dataset/TimeSeriesDataset.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/dataset/Version.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/article/Article.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/article/ArticleDownload.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/base/StatisticalDocument.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/bulletin/Bulletin.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/AssociatedFile.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/FigureBase.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/FigureSection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/chart/Annotation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/chart/AnnotationDevice.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/chart/Chart.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/chart/Device.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/equation/Equation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/image/Image.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/table/Table.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/table/TableModifications.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/taxonomy/ProductPage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/taxonomy/TaxonomyLandingPage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/taxonomy/base/TaxonomyNode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/visualisation/Visualisation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/partial/Alert.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/partial/AlertType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/partial/Contact.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/partial/Link.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/partial/markdown/MarkdownSection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/util/FileScanner.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Article.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Bulletin.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Contact.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Page.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/Section.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/App$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/models/Article.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/models/Bulletin.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/models/Contact.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/models/Page.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/models/Section.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/models/UriContent.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/UriContent.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/census/Image.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/App.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/App.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient$Pipeline.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient$Pipeline.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.class" afterPath="$PROJECT_DIR$/target/classes/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dp-elastic-importer.iml" afterPath="$PROJECT_DIR$/dp-elastic-importer.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/elasticsearch/OpenNlpSearchClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/search/index-config.yml" afterPath="$PROJECT_DIR$/src/main/resources/search/index-config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/search/index-config.yml" afterPath="$PROJECT_DIR$/target/classes/search/index-config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageDescription.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageDescription.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageType.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/home/HomeSection.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/home/HomeSection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticLandingPage.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticLandingPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/BaseStaticPage.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/BaseStaticPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/StaticPageSection.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/StaticPageSection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/base/StatisticalDocument.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/base/StatisticalDocument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/util/FileScanner.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/util/FileScanner.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -100,38 +29,45 @@
     <favorites_list name="dp-elastic-importer" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="173">
-                  <caret line="107" column="28" lean-forward="true" selection-start-line="107" selection-start-column="28" selection-end-line="107" selection-end-column="28" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="PageType.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageType.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="724">
-                  <caret line="61" column="49" lean-forward="false" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="220" column="12" lean-forward="false" selection-start-line="220" selection-start-column="12" selection-end-line="220" selection-end-column="12" />
+              <folding>
+                <element signature="e#4901#4902#0" expanded="true" />
+                <element signature="e#4933#4934#0" expanded="true" />
+                <marker date="1513677096000" expanded="true" signature="6046:9710" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TimeSeries.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/timeseries/TimeSeries.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="236">
+              <caret line="85" column="26" lean-forward="false" selection-start-line="85" selection-start-column="15" selection-end-line="85" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PageDescription.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageDescription.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="534">
+              <caret line="82" column="32" lean-forward="false" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
+              <folding>
+                <element signature="e#10781#10782#0" expanded="true" />
+                <element signature="e#10822#10823#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -155,6 +91,10 @@
       <find>createIndex</find>
       <find>Static Page</find>
       <find>bread</find>
+      <find>file</find>
+      <find>Setting</find>
+      <find>seasonalAdjustment</find>
+      <find>description</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,9 +112,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/partial/Alert.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/partial/markdown/MarkdownSection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/partial/Contact.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageDescription.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/release/Release.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/home/HomeSection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/chart/Chart.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/FigureBase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/taxonomy/base/TaxonomyNode.java" />
@@ -182,9 +120,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/FigureSection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/compendium/CompendiumChapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/base/Statistics.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/base/StatisticalDocument.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/base/StatisticalData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/timeseries/TimeSeries.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/dataset/DatasetLandingPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/article/ArticleDownload.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/taxonomy/ProductPage.java" />
@@ -196,29 +132,33 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/article/Article.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/equation/Equation.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/table/Table.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/qmi/QMI.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/util/ContentConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/home/HomePage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/adhoc/AdHoc.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/compendium/CompendiumLandingPage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/StaticPageSection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/foi/FOI.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/OldApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/census/HomePageCensus.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/bulletin/Bulletin.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/figure/image/Image.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/util/FileScanner.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticArticle.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/Methodology.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/partial/Link.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/dataset/ReferenceTables.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/Page.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/BaseStaticPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/base/StatisticalDocument.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticLandingPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/BaseStaticPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/StaticPageSection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/home/HomeSection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/util/FileScanner.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/timeseries/TimeSeries.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageDescription.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" />
       </list>
     </option>
   </component>
@@ -230,9 +170,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="-1057" />
-    <option name="width" value="1920" />
-    <option name="height" value="1053" />
+    <option name="y" value="-877" />
+    <option name="width" value="1440" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -321,17 +261,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="importer" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dp-elastic-importer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dp-elastic-importer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="importer" type="462c0819:PsiDirectoryNode" />
               <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -368,7 +297,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -557,10 +486,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34956303" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28542304" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28542304" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -598,20 +527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageDescription.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-83">
-          <caret line="37" column="18" lean-forward="false" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/home/HomeSection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -669,33 +584,6 @@
           <caret line="14" column="52" lean-forward="true" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/base/StatisticalDocument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-105">
-          <caret line="22" column="19" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/base/StatisticalData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/timeseries/TimeSeries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="133" column="16" lean-forward="false" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -800,16 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/home/HomePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/adhoc/AdHoc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -824,16 +702,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/StaticPageSection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="41" lean-forward="false" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -886,32 +754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/bulletin/Bulletin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/OldApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1627">
-          <caret line="56" column="2" lean-forward="true" selection-start-line="56" selection-start-column="2" selection-end-line="56" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="61" column="49" lean-forward="false" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/qmi/QMI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -936,31 +778,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticPage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="39" lean-forward="true" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/util/FileScanner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="31" column="47" lean-forward="false" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/Methodology.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding>
-            <element signature="e#431#432#0" expanded="true" />
-            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#431#432#0" expanded="false" />
+            <element signature="e#454#455#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -970,16 +794,8 @@
         <state relative-caret-position="480">
           <caret line="34" column="22" lean-forward="false" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticArticle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -991,65 +807,176 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/base/Statistics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="17" column="45" lean-forward="false" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/dataset/ReferenceTables.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticArticle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/bulletin/Bulletin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="43" lean-forward="true" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/Page.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="58" column="41" lean-forward="false" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
-          <folding>
-            <element signature="e#1271#1272#0" expanded="true" />
-            <element signature="e#1314#1315#0" expanded="true" />
-            <element signature="e#1347#1348#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="14" column="38" lean-forward="true" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/base/StatisticalDocument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="53" column="18" lean-forward="false" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="16" column="40" lean-forward="false" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/BaseStaticPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="384">
+          <caret line="52" column="33" lean-forward="false" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+          <folding>
+            <element signature="e#1229#1230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/OldApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticLandingPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticLandingPage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/base/StaticPageSection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="33" column="33" lean-forward="false" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+        <state relative-caret-position="240">
+          <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#936#937#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/home/HomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/home/HomeSection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="31" column="28" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#924#925#0" expanded="true" />
+            <element signature="e#959#960#0" expanded="true" />
+            <element signature="e#992#993#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/util/FileScanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="27" column="50" lean-forward="false" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/base/Statistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/base/StatisticalData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="13" column="49" lean-forward="false" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/timeseries/TimeSeries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="85" column="26" lean-forward="false" selection-start-line="85" selection-start-column="15" selection-end-line="85" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageDescription.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="82" column="32" lean-forward="false" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
+          <folding>
+            <element signature="e#10781#10782#0" expanded="true" />
+            <element signature="e#10822#10823#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="107" column="28" lean-forward="true" selection-start-line="107" selection-start-column="28" selection-end-line="107" selection-end-column="28" />
+        <state relative-caret-position="525">
+          <caret line="220" column="12" lean-forward="false" selection-start-line="220" selection-start-column="12" selection-end-line="220" selection-end-column="12" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#4901#4902#0" expanded="true" />
+            <element signature="e#4933#4934#0" expanded="true" />
+            <marker date="1513677096000" expanded="true" signature="6046:9710" ph="..." />
           </folding>
         </state>
       </provider>

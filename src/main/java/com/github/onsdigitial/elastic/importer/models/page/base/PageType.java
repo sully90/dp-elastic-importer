@@ -20,7 +20,7 @@ public enum PageType {
     article("Article"),
     article_download("Article download"),
     timeseries_landing_page("Timeseries landing page"),
-    timeseries("Timeseries page"),
+    timeseries("Timeseries"),
     data_slice("Data slice"),
     compendium_landing_page("Compendium landing page"),
     compendium_chapter("Compendium chapter page"),//Resolve parent

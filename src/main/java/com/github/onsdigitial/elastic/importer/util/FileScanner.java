@@ -21,17 +21,12 @@ public class FileScanner {
 
     private void scan(File directory) throws IOException {
         // Scans all directories for json files
-        File[] subdirectories = this.subDirectories(directory);
-        if (subdirectories.length > 0) {
-            for (File subDirectory : subdirectories) {
-                this.scan(subDirectory);
-            }
-        } else {
-            // We are at the root level, so get the file
-            for (File file : directory.listFiles(File::isFile)) {
-                if (file.getName().equals("data.json")) {
-                    this.files.add(file);
-                }
+        File[] files = directory.listFiles();
+        for (File file : files) {
+            if (file.isDirectory()) {
+                this.scan(file);
+            } else if (file.getName().equals("data.json")) {
+                this.files.add(file);
             }
         }
     }

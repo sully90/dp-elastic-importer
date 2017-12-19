@@ -13,6 +13,10 @@ import java.net.URI;
  */
 public class StaticPageSection extends Link {
 
+    private StaticPageSection() {
+        // For Jackson
+    }
+
     private String summary;
 
     public StaticPageSection(URI uri) {

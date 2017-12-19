@@ -14,6 +14,7 @@ import java.util.List;
 public abstract class BaseStaticPage extends Page {
 
     private List<DownloadSection> downloads;
+    private String fileName;
 
     /**
      *Body in markdown format
@@ -47,5 +48,9 @@ public abstract class BaseStaticPage extends Page {
 
     public void setDownloads(List<DownloadSection> downloads) {
         this.downloads = downloads;
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 }

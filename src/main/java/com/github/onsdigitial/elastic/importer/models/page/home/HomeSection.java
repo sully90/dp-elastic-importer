@@ -29,6 +29,14 @@ public class HomeSection extends Content implements Comparable<HomeSection> {
         this.index = index;
     }
 
+    public Link getTheme() {
+        return theme;
+    }
+
+    public Link getStatistics() {
+        return statistics;
+    }
+
     @Override
     public int compareTo(HomeSection o) {
         if (this.index == null) {
