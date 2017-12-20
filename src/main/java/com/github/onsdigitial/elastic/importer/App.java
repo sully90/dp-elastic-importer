@@ -50,8 +50,6 @@ import org.apache.commons.io.IOUtils;
 import org.elasticsearch.action.bulk.BackoffPolicy;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.unit.ByteSizeUnit;
-import org.elasticsearch.common.unit.ByteSizeValue;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.slf4j.Logger;
@@ -61,9 +59,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
@@ -79,10 +75,13 @@ public class App {
     private final FileScanner fileScanner;
     private final Host host = Host.LOCALHOST;
 
+    private final Date startTime;
     private final String indexName;
     private List<Page> pages;
 
-    private int commitCount = 100;
+    private Map<PageType, Boolean> indexExists;
+
+    private static final int numBulkActions = 1000;
 
     static {
         MAPPER = new ObjectMapper();
@@ -94,12 +93,19 @@ public class App {
         String dataDirectory = String.format("%s/zebedee/master/", zebedeeRoot);
 
         this.fileScanner = new FileScanner(dataDirectory);
-        this.indexName = "ons_test";
+        this.startTime = new Date();
+//        this.indexName = String.format("ons_%d", this.startTime.getTime());
+        this.indexName = "ons";
         this.pages = new ArrayList<>();
+        this.indexExists = new HashMap<>();
     }
 
     public String getIndexName() {
         return indexName;
+    }
+
+    public Date getStartTime() {
+        return startTime;
     }
 
     private Page asClass(String fileString, Class<? extends Page> returnClass) throws IOException {
@@ -206,10 +212,34 @@ public class App {
             page = this.fromFile(file);
 
             if (page != null) {
-                if (this.pages.size() >= this.commitCount) {
+                if (this.pages.size() >= this.numBulkActions) {
+                    // Create mapping of PageType to List<Page>
+                    Map<PageType, List<Page>> pageTypeListMap = new HashMap<>();
+
+                    for (Page p : this.pages) {
+                        if (!pageTypeListMap.containsKey(p.getType())) {
+                            pageTypeListMap.put(p.getType(), new ArrayList<>());
+                        }
+                        pageTypeListMap.get(p.getType()).add(p);
+
+                    }
                     // Async bulk insert - use a copy of this.pages and then clear the list
-                    searchClient.bulk(this.indexName, DefaultDocumentTypes.DOCUMENT, new ArrayList<>(this.pages).stream(),
-                            XContentType.JSON, JsonInclude.Include.NON_NULL);
+                    for (PageType pageType : pageTypeListMap.keySet()) {
+                        String indexName = String.format("%s_%s", this.indexName, pageType.getFormattedDisplayName());
+
+                        if (!this.indexExists.containsKey(pageType)) {
+                            this.indexExists.put(pageType, searchClient.indexExists(indexName));
+                        }
+
+                        if (!this.indexExists.get(pageType)) {
+                            createIndex(indexName, searchClient);
+                            this.indexExists.replace(pageType, true);
+                        }
+
+                        LOGGER.info(String.format("Indexing %d documents to index %s", pageTypeListMap.get(pageType).size(), indexName));
+                        searchClient.bulk(indexName, DefaultDocumentTypes.DOCUMENT, pageTypeListMap.get(pageType).stream(),
+                                XContentType.JSON, JsonInclude.Include.NON_NULL);
+                    }
                     // Clear the list
                     this.pages.clear();
                 } else {
@@ -226,7 +256,10 @@ public class App {
         try (ElasticSearchClient<Page> searchClient = getClientOpenNlpTcp(this.host)) {
 
             // Reset the index
-            resetIndex(this.indexName, searchClient);
+            for (PageType pageType : PageType.values()) {
+                String indexName = String.format("%s_%s", this.indexName, pageType.getFormattedDisplayName());
+                resetIndex(indexName, searchClient);
+            }
 
             Stream<File> fileStream = files.stream();
             fileStream.forEach(x -> this.indexPage(searchClient, x));
@@ -238,14 +271,18 @@ public class App {
         }
     }
 
+    private static void createIndex(String indexName, ElasticSearchClient<Page> searchClient) throws IOException {
+        Settings settings = ElasticSearchHelper.loadSettingsFromFile("/search/", "index-config.yml");
+        Map<String, Object> mapping = ElasticSearchHelper.loadMappingFromFile("/search/", "default-document-mapping.json");
+        searchClient.createIndex(indexName, DefaultDocumentTypes.DOCUMENT, settings, mapping);
+    }
+
     private static void resetIndex(String indexName, ElasticSearchClient<Page> searchClient) throws IOException {
         LOGGER.info("Resetting index: " + indexName);
         if (searchClient.indexExists(indexName)) {
             searchClient.dropIndex(indexName);
+            createIndex(indexName, searchClient);
         }
-        Settings settings = ElasticSearchHelper.loadSettingsFromFile("/search/", "index-config.yml");
-        Map<String, Object> mapping = ElasticSearchHelper.loadMappingFromFile("/search/", "default-document-mapping.json");
-        searchClient.createIndex(indexName, DefaultDocumentTypes.DOCUMENT, settings, mapping);
     }
 
     private static ElasticSearchClient<Page> getClientOpenNlpTcp(Host host) throws UnknownHostException {
@@ -265,7 +302,7 @@ public class App {
 
     private static BulkProcessorConfiguration getConfiguration() {
         BulkProcessorConfiguration bulkProcessorConfiguration = new BulkProcessorConfiguration(BulkProcessingOptions.builder()
-                .setBulkActions(100)
+                .setBulkActions(numBulkActions)
 //                .setBulkSize(new ByteSizeValue(5, ByteSizeUnit.MB))
 //                .setFlushInterval(TimeValue.timeValueSeconds(5))
                 .setConcurrentRequests(8)

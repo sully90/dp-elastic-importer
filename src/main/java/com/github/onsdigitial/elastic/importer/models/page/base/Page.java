@@ -1,11 +1,14 @@
 package com.github.onsdigitial.elastic.importer.models.page.base;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.onsdigitial.elastic.importer.base.Content;
 import com.github.onsdigitial.elastic.importer.models.partial.Link;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by bren on 10/06/15.
@@ -25,6 +28,9 @@ public abstract class Page extends Content {
     private List<Object> breadcrumb;
 
     private List<Object> correction;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Map<String, Set<String>> entities;
 
     public Page() {
         this.type = getType();
@@ -62,5 +68,9 @@ public abstract class Page extends Content {
 
     public List<Object> getCorrection() {
         return correction;
+    }
+
+    public Map<String, Set<String>> getEntities() {
+        return entities;
     }
 }

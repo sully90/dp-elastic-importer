@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" line="150" mnemonic="5" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" line="156" mnemonic="5" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44a0f4a5-c241-4441-aff8-2cf9c76cdfee" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/Page.java" afterPath="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/Page.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,26 +22,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="818">
-              <caret line="265" column="4" lean-forward="false" selection-start-line="265" selection-start-column="4" selection-end-line="265" selection-end-column="4" />
+            <state relative-caret-position="1971">
+              <caret line="274" column="54" lean-forward="true" selection-start-line="274" selection-start-column="54" selection-end-line="274" selection-end-column="54" />
               <folding>
-                <element signature="e#5418#5419#0" expanded="true" />
-                <element signature="e#5450#5451#0" expanded="true" />
-                <marker date="1513695587000" expanded="true" signature="6563:10227" ph="..." />
+                <element signature="e#5516#5517#0" expanded="true" />
+                <element signature="e#5548#5549#0" expanded="true" />
+                <element signature="e#5582#5583#0" expanded="true" />
+                <element signature="e#5614#5615#0" expanded="true" />
+                <marker date="1513755576000" expanded="true" signature="6727:10391" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Page.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Page.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/Page.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-              <folding />
+            <state relative-caret-position="438">
+              <caret line="72" column="51" lean-forward="false" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
+              <folding>
+                <element signature="e#1623#1624#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,6 +88,7 @@
       <find>Setting</find>
       <find>seasonalAdjustment</find>
       <find>description</find>
+      <find>LOGGER.info</find>
       <find>summary</find>
     </findStrings>
   </component>
@@ -136,7 +142,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/Methodology.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/partial/Link.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/dataset/ReferenceTables.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/Page.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/base/StatisticalDocument.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticLandingPage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/staticpage/StaticPage.java" />
@@ -148,6 +153,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/data/timeseries/TimeSeries.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageDescription.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/Page.java" />
       </list>
     </option>
   </component>
@@ -478,7 +484,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34956303" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34956303" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28214732" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -922,14 +928,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageDescription.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="105" column="28" lean-forward="false" selection-start-line="105" selection-start-column="21" selection-end-line="105" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/statistics/document/article/Article.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -946,22 +944,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/Page.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/PageDescription.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        <state relative-caret-position="194">
+          <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="818">
-          <caret line="265" column="4" lean-forward="false" selection-start-line="265" selection-start-column="4" selection-end-line="265" selection-end-column="4" />
+        <state relative-caret-position="1971">
+          <caret line="274" column="54" lean-forward="true" selection-start-line="274" selection-start-column="54" selection-end-line="274" selection-end-column="54" />
           <folding>
-            <element signature="e#5418#5419#0" expanded="true" />
-            <element signature="e#5450#5451#0" expanded="true" />
-            <marker date="1513695587000" expanded="true" signature="6563:10227" ph="..." />
+            <element signature="e#5516#5517#0" expanded="true" />
+            <element signature="e#5548#5549#0" expanded="true" />
+            <element signature="e#5582#5583#0" expanded="true" />
+            <element signature="e#5614#5615#0" expanded="true" />
+            <marker date="1513755576000" expanded="true" signature="6727:10391" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/github/onsdigitial/elastic/importer/models/page/base/Page.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="72" column="51" lean-forward="false" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
+          <folding>
+            <element signature="e#1623#1624#0" expanded="true" />
           </folding>
         </state>
       </provider>
